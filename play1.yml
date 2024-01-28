@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+  ignore_errors: true
+  vars:
+    user_name: fatou1
+    group_name: security
+  vars_files:
+    variables.yml:
+  tasks:
+    - name: check the time
+      command: dateabsgfr
+    - name: create user Fatou
+      user:
+         name: "{{user_name}}"
+         comment: fatou sang
+    - name : create group
+      group:
+         name: "{{group_name}}"
+         state: present
+    - name: install package
+      package:
+        name: "{{pkg_name}}"
+        state: present
