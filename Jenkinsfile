@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Package Ansible Code') {
             steps {
-                 sh 'zip -r ansible_code.zip -i /home/ec2-user/ansible-dev 
+                 sh 'zip -r ansible_code.zip -i /home/ec2-user/ansible-dev'
             }
         }
         stage('Store in jfrog') {
