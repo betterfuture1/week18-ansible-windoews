@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Store in jfrog') {
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T /home/ec2-user/ansible-dev "http://35.153.52.148:8081/artifactory/ansible-zip//home/ec2-user/ansible"'  
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T /home/ec2-user/ansible-dev "http://35.153.52.148:8081/artifactory/ansible-zip/"'  
             }
         }
         stage('Unzip Ansible Code') {
