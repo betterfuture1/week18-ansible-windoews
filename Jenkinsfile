@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Unzip Ansible Code') {
             steps {
-                sh 'unzip -o ansible-code.zip -d /home/ec2-user/ansible-dev'
+                sh 'unzip -o ansible-code.zip -d /c/Users/fatou/devops-lab/week18-ansible-windoews'
             }
         }
         stage('Deploy to Ansible Server') {
