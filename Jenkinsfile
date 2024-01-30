@@ -11,8 +11,8 @@ pipeline {
                 script {
                     dir ('week18-ansible-windoewszx')
                 }
-                 sh ' zip -r ansible_code.zip  -x Jenkinsfile
-                 '
+                 sh ' zip -r ansible_code.zip *  -x Jenkinsfile '
+                 
             }
         }
         stage('Store in jfrog') {
