@@ -8,9 +8,6 @@ pipeline {
         }
         stage('Package Ansible Code') {
             steps {
-                script {
-                    dir ('week18-ansible-windoews')
-                }
                  sh ' zip -r ansible-code.zip week18-ansible-windoews-x Jenkinsfile '
                  
             }
