@@ -20,10 +20,13 @@ pipeline {
         }
         
         stage('Deploy to Ansible Server and cp to ec2') {
+            agent {
+                label 'ansible'
+            }
             steps {
                 
                    
-                    sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O ansible-code.zip "http://3.85.1.71:8081/artifactory/ansible-zip/"'
+                    sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://3.85.1.71:8081/artifactory/ansible-zip/"'
 
                     // Transfer the zip file to the Ansible server
                     sh 'scp ansible-codes.zip ec2-user@35.175.202.181:/home/ec2-user/'
@@ -32,7 +35,9 @@ pipeline {
                 }
             }
         stage('unzip the file'){
-
+           agent {
+             label 'ansible'
+           }
          steps  {
 
                 // Unzip the file on the Ansible server
