@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Package Ansible Code') {
             steps {
-                 sh ' zip -r ansible-codes.zip week18-ansible-windoews-x Jenkinsfile '
+                 sh ' zip -r ansible-code.zip week18-ansible-windoews-x Jenkinsfile '
                  
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://35.153.231.68:8081/artifactory/ansible-zip/ansible-codes.zip/"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://35.153.231.68:8081/artifactory/ansible-zip/ansible-code.zip"'
 
                    
             }
@@ -38,7 +38,7 @@ pipeline {
          steps  {
 
                 // Unzip the file on the Ansible server
-                 sh 'unzip -o ansible-dev/ansible-codes.zip' 
+                 sh 'unzip -o ansible-dev/ansible-code.zip' 
 
                 } 
             } 
