@@ -1,16 +1,20 @@
 ---
-- name: Monthly Updates
-  hosts: all
-  become: true
-  tasks:
-    - name: Update packages (YUM)
-      yum:
-        name: '*'
-        state: latest
-      when: ansible_os_family == 'RedHat'
+  - hosts: all
+   become: true
+   tasks:
+      - name : touch a file
+        file: 
+          path: /home/ec2-user/week4
+          state: touch
+          mode: 0644 
+      - name: Update packages (YUM)
+        yum:
+          name: '*'
+          state: latest
+       when: ansible_os_family == 'RedHat'
 
-    - name: Update packages (APT)
-      apt:
-        upgrade: yes
-        update_cache: yes
-      when: ansible_os_family == 'Debian'
+      - name: Update packages (APT)
+        apt:
+          upgrade: yes
+          update_cache: yes
+        when: ansible_os_family == 'Debian'

@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Store in jfrog') {
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http://35.153.231.68:8081/artifactory/ansible-zip/"'  
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http:/54.236.47.139/8:8081/artifactory/ansible-zip/"'  
             }
         }
         
@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://35.153.231.68:8081/artifactory/ansible-zip/ansible-code.zip"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://54.236.47.139:8081/artifactory/ansible-zip/ansible-code.zip"'
 
                    
             }
@@ -54,7 +54,7 @@ pipeline {
         stage ('run playbook'){
          
          steps {
-            sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/update.yml'
+            sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/code2.yml'
                }
 
             }
