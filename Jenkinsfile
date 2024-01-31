@@ -43,14 +43,14 @@ pipeline {
                 } 
             } 
 
-        stage ('copy to the dest'){
+       /* stage ('copy to the dest'){
             agent {
                 label 'ansible'
             }
             steps {
                 sh 'scp ansible-codes.zip ec2-user@34.201.153.232:/home/ec2-user/week18-ansible-dev/ansible-dev'
-           }
-        }
+          // }
+        }*/
        
           
         }
