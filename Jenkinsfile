@@ -51,9 +51,21 @@ pipeline {
                 sh 'scp ansible-codes.zip ec2-user@34.201.153.232:/home/ec2-user/week18-ansible-dev/ansible-dev'
           // }
         }*/
+        stage ('run playbook'){
+         
+         steps {
+            sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/workspace//Devops/ansible-pipeline/update.yml'
+               }
+
+            }
+            
+        
        
           
-        }
+    
 
     
+        }
+        
+        
     }
