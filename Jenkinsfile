@@ -35,7 +35,7 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh 'scp ansible-codes.zip ec2-user@54.160.65.37:/home/ec2-user/ansible-dev'
+                sh 'scp ansible-codes.zip ec2-user@54.160.65.37:/home/ec2-user/week18-ansible-windoews/ansible-dev'
            }
         }
 
