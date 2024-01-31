@@ -54,7 +54,7 @@ pipeline {
                 script {
                     dir ('ansibles-codes'){
                 
-                sh 'ansible-playbook -i /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/inventory.yml /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code2.yml'
+                sh '/usr/local/bin/ansible-playbook -i /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/inventory.yml /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code2.yml'
                  }
                 }
             }
