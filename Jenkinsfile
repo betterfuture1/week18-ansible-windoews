@@ -38,7 +38,7 @@ pipeline {
          steps  {
 
                 // Unzip the file on the Ansible server
-                 sh 'ssh ec2-user@34.201.153.232 "unzip -o /home/ec2-user/ansible-codes.zip -d /home/ec2-user/ansible-dev/"'
+                 sh 'unzip -o /home/ec2-user/ansible-codes.zip -d /home/ec2-user/ansible-dev/'
 
                 } 
             } 
