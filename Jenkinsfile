@@ -29,7 +29,7 @@ pipeline {
                     sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O  "http://3.85.1.71:8081/artifactory/ansible-zip/ansible-codes.zip"'
 
                     // Transfer the zip file to the Ansible server
-                    sh 'scp ansible-codes.zip ec2-user@35.175.202.181:/home/ec2-user/'
+                    sh 'scp ansible-codes.zip ec2-user@35.175.202.181:/home/ec2-user/ansible-dev'
 
                    
                 }
