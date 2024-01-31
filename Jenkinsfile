@@ -52,9 +52,11 @@ pipeline {
         stage('Run Playbook') {
             steps {
                 script {
-                    dir ('ansibles-code')
-                }
+                    dir ('ansibles-code'){
+                
                 sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/code2.yml'
+                 }
+                }
             }
         }
     }
