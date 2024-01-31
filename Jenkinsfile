@@ -54,7 +54,7 @@ pipeline {
         stage ('run playbook'){
          
          steps {
-            sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/workspace//Devops/ansible-pipeline/update.yml'
+            sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/update.yml'
                }
 
             }
