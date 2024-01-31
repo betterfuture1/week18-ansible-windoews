@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Store in jfrog') {
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http://3.85.1.71:8081/artifactory/ansible-zip/"'  
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http://35.153.231.68:8081/artifactory/ansible-zip/"'  
             }
         }
         
