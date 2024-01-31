@@ -38,7 +38,7 @@ pipeline {
          steps  {
 
                 // Unzip the file on the Ansible server
-                 sh 'unzip -o ansible-dev/ansible-code.zip' 
+                 sh 'unzip -o ansible-code.zip' 
 
                 } 
             } 
