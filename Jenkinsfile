@@ -30,15 +30,7 @@ pipeline {
                    
             }
         }
-        stage ('copy to the dest'){
-            agent {
-                label 'ansible'
-            }
-            steps {
-                sh 'scp ansible-codes.zip ec2-user@54.160.65.37:/home/ec2-user/week18-ansible-windoews/ansible-dev'
-           }
-        }
-
+        
         stage('unzip the file'){
            agent {
              label 'ansible'
@@ -46,10 +38,22 @@ pipeline {
          steps  {
 
                 // Unzip the file on the Ansible server
-                 sh 'ssh ec2-user@35.175.202.181 "unzip -o /home/ec2-user/ansible-codes.zip/ansible-dev -d /home/ec2-user/ansible-dev/"'
+                 sh 'ssh ec2-user@35.175.202.181 "unzip -o /home/ec2-user/ansible-codes.zip -d /home/ec2-user/ansible-dev/"'
 
                 } 
-            }        
+            } 
+
+        stage ('copy to the dest'){
+            agent {
+                label 'ansible'
+            }
+            steps {
+                sh 'scp ansible-codes.zip ec2-user@54.160.65.37:/home/ec2-user/week18-ansible-dev/ansible-dev'
+           }
+        }
+       
           
         }
+
+    
     }
