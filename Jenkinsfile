@@ -35,7 +35,7 @@ pipeline {
             }
             steps {
                 sh 'unzip -o ansible-code.zip'
-                dir ('ansible-code')
+                sh 'cd ansible-code' 
             }
         }
 
