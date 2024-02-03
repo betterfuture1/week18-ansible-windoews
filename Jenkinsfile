@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage('Unzip the File') {
+        stage('Unzip the File amd play playbook') {
             agent {
                 label 'ansible'
             }
@@ -38,7 +38,9 @@ pipeline {
                     // Unzip ansible-codes.zip
                     sh 'unzip -o ansible-code.zip'
                     // Run ansible-playbook from the correct directory
-                    dir('ansible-code')  
+                    dir('ansible-code') {
+                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code-ansible/code2.yml'
+                    } 
             }
         }
 
@@ -54,7 +56,7 @@ pipeline {
         
         
 
-        stage('Run Playbook') {
+        /*stage('Run Playbook') {
             agent {
                 label 'ansible'
             }
@@ -64,7 +66,7 @@ pipeline {
                  
                 
             }
-        }
+        */}
     }
 }
 
