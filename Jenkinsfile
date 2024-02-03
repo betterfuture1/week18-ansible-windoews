@@ -38,16 +38,16 @@ pipeline {
             }
         }
 
-        /*
+        
         stage('Copy to the Dest') {
             agent {
                 label 'ansible'
             }
             steps {
-                sh 'scp ansible-codes.zip ec2-user@34.201.153.232:/home/ec2-user/week18-ansible-dev/ansible-dev'
+                sh 'scp ansible-code ec2-user@54.237.32.132:/home/ec2-user/week18-ansible-dev/ansible-dev'
             }
         }
-        */
+        
 
         stage('Run Playbook') {
             agent {
