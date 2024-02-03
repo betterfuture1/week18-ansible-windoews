@@ -44,7 +44,7 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh 'scp ansible-code ec2-user@54.237.32.132:/home/ec2-user/week18-ansible-windoews/ansible-dev'
+                sh 'scp ansible-code ec2-user@54.237.32.132:/home/ec2-user//ansible-dev'
             }
         }
         
