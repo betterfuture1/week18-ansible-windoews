@@ -35,18 +35,20 @@ pipeline {
             }
             steps {
                 sh 'unzip -o ansible-code.zip'
+                dir ('ansible-code')
             }
         }
 
         
-        stage('Copy to the Dest') {
+        /* stage('Copy to the Dest') {
             agent {
                 label 'ansible'
             }
             steps {
                 sh 'scp ansible-code ec2-user@54.237.32.132:/home/ec2-user//ansible-dev'
             }
-        }
+        }*/
+        
         
 
         stage('Run Playbook') {
@@ -54,9 +56,7 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh ('dir ansible-code')
-        
-            
+                
                 sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code-ansible/code2.yml'
                  
                 
