@@ -50,10 +50,13 @@ pipeline {
         */
 
         stage('Run Playbook') {
+            agent {
+                label 'ansible'
+            }
             steps {
         
             
-                sh ' /var/lib/jenkins/workspace/Devops/ansible-pipeline/ansible-playbook -i home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/inventory.yml  home/ec2-user/home/ec2-user/ansible-dev/home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code2.yml'
+                sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code2.yml'
                  
                 
             }
