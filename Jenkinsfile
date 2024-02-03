@@ -34,8 +34,11 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh 'unzip -o ansible-code.zip'
-                sh 'cd ansible-code' 
+                script {
+                    // Unzip ansible-codes.zip
+                    sh 'unzip -o ansible-code.zip'
+                    // Run ansible-playbook from the correct directory
+                    dir('ansible-code')  
             }
         }
 
