@@ -5,7 +5,7 @@
   tasks:
     - name: Creates a cron job
       cron:
-        name: yum autoupdate servers
+        name: yum autoupdate 
         weekday: "*"
         minute: "*"
         hour: "*"
