@@ -10,13 +10,13 @@ pipeline {
 
         stage('Package Ansible Code') {
             steps {
-                sh 'zip -r ansible-code.zip week18-ansible-windoews-x Jenkinsfile'
+                sh 'zip -r ansible-codes.zip week18-ansible-windoews-x Jenkinsfile'
             }
         }
 
         stage('Store in JFrog') {
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http://54.236.47.139:8081/artifactory/ansible-zip/"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-codes.zip "http://100.24.238.101:8081/artifactory/ansible-zip/"'
             }
         }
 
@@ -25,40 +25,36 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O "http://54.236.47.139:8081/artifactory/ansible-zip/ansible-code.zip"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O "http://100.24.238.101:8081/artifactory/ansible-zip/ansible-codes.zip"'
             }
         }
 
-        stage('Unzip the File') {
+        stage('Unzip the File am play playbook') {
             agent {
                 label 'ansible'
             }
-            steps {
-                sh 'unzip -o ansible-code.zip'
-            }
-        }
-
-        /*
-        stage('Copy to the Dest') {
-            agent {
-                label 'ansible'
-            }
-            steps {
-                sh 'scp ansible-codes.zip ec2-user@34.201.153.232:/home/ec2-user/week18-ansible-dev/ansible-dev'
-            }
-        }
-        */
-
-        stage('Run Playbook') {
             steps {
                 script {
-                    dir ('ansibles-codes'){
-                
-                sh '/usr/local/bin/ansible-playbook -i /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/inventory.yml /home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code2.yml'
-                 }
+                    // Unzip ansible-codes.zip
+                    sh 'unzip -o ansible-codes.zip'
+                    // Run ansible-playbook from the correct directory
+                    dir('ansible-code') {
+                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml  /home/ec2-user/ansible-dev/code2.yml'
+                   }
                 }
             }
+
         }
-    }
-}
+        stage('play the cron-job') {
+            agent {
+                label 'ansible'
+            }
+            steps {
+                
+                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml  /home/ec2-user/ansible-dev/cron-update.yml'
+                   }
+                }
+            }
+
+        }
 
