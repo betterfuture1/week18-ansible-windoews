@@ -10,13 +10,13 @@ pipeline {
 
         stage('Package Ansible Code') {
             steps {
-                sh 'zip -r ansible-code.zip week18-ansible-windoews-x Jenkinsfile'
+                sh 'zip -r ansible-codes.zip week18-ansible-windoews-x Jenkinsfile'
             }
         }
 
         stage('Store in JFrog') {
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-code.zip "http://18.234.145.212:8081/artifactory/ansible-zip/"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -T ansible-codes.zip "http://100.24.238.101:8081/artifactory/ansible-zip/"'
             }
         }
 
@@ -25,21 +25,21 @@ pipeline {
                 label 'ansible'
             }
             steps {
-                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O "http://18.234.145.212:8081/artifactory/ansible-zip/ansible-code.zip"'
+                sh 'curl -uadmin:AP4KPM9fdPBKovDyeDco7NnkZZV -O "http://100.24.238.101:8081/artifactory/ansible-zip/ansible-codes.zip"'
             }
         }
 
-        stage('Unzip the File amd play playbook') {
+        stage('Unzip the File am play playbook') {
             agent {
                 label 'ansible'
             }
             steps {
                 script {
                     // Unzip ansible-codes.zip
-                    sh 'unzip -o ansible-code.zip'
+                    sh 'unzip -o ansible-codes.zip'
                     // Run ansible-playbook from the correct directory
                     dir('ansible-code') {
-                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml/home/ec2-user/home/ec2-user/ansible-dev/home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/ansible-code /code2.yml'
+                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml  /home/ec2-user/ansible-dev/code2.yml'
                     } 
             }
         }
