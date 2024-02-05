@@ -45,7 +45,7 @@ pipeline {
             }
 
         }
-        stage('play the cron-job') {
+        stage('play the cron job') {
             agent {
                 label 'ansible'
             }
@@ -56,5 +56,5 @@ pipeline {
                 }
             }
 
-        }
+    
 

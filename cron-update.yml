@@ -1,3 +1,4 @@
+
 ---
 - name: cron job to update 
   hosts: all
@@ -5,11 +6,11 @@
   tasks:
     - name: Creates a cron job
       cron:
-        name: yum autoupdate 
+        name: yum autoupdate
         weekday: "*"
         minute: "*"
         hour: "*"
         day: "1"
         month: "*"
-        job: "yum update -y or apt update -y"      
+        job: "yum update -y or apt update -y"     
       when: "ansible_os_family == 'RedHat' or ansible_distribution == 'Amazon' or ansible_os_family == 'Debian'"
