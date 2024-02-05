@@ -1,4 +1,5 @@
----
+
+---                                                                                               
 - hosts: ws
   become:  true
   tasks:
