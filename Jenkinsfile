@@ -40,33 +40,26 @@ pipeline {
                     // Run ansible-playbook from the correct directory
                     dir('ansible-code') {
                         sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml  /home/ec2-user/ansible-dev/code2.yml'
-                    } 
+                   }
+                }
             }
+
         }
-
-        
-        /* stage('Copy to the Dest') {
-            agent {
-                label 'ansible'
-            }
-            steps {
-                sh 'scp ansible-code ec2-user@54.237.32.132:/home/ec2-user//ansible-dev'
-            }
-        }*/
-        
-        
-
-        /*stage('Run Playbook') {
+        stage('play the cron job') {
             agent {
                 label 'ansible'
             }
             steps {
                 
-                sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml home/ec2-user/ansible-dev/workspace/Devops/ansible-pipeline/code-ansible/code2.yml'
-                 
-                
+                        sh 'ansible-playbook -i home/ec2-user/ansible-dev/inventory.yml  /home/ec2-user/ansible-dev/cron-update.yml'
+                   }
+                }
             }
-        */}
-    }
-}
+
+        }
+    
+    
+
+
+
 
